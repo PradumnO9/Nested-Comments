@@ -1,0 +1,40 @@
+{
+    "comments": {
+        "1": {
+            "id": 1,
+            "text": "Hello",
+            "parentId": null,
+            "children": [2, 3, 4]
+        },
+        "2": {
+            "id": 2,
+            "text": "Hi",
+            "parentId": 1,
+            "children": []
+        },
+        "3": {
+            "id": 3,
+            "text": "Hey buddy, how are you?",
+            "parentId": 1,
+            "children": [4]
+        },
+        "4": {
+            "id": 4,
+            "text": "I am fine what about you?",
+            "parentId": 3,
+            "children": [6]
+        },
+        "5": {
+            "id": 5,
+            "text": "hello everyone...",
+            "parentId": 1,
+            "children": []
+        },
+        "6": {
+            "id": 6,
+            "text": "hey...",
+            "parentId": 4,
+            "children": []
+        }
+    }
+}
