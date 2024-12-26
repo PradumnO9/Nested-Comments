@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <p className='text-xl m-3'>Nested Comments N level</p>
+      <p className='flex justify-center text-xl m-3'>Nested Comments N level</p>
       <InputBox />
     </div>
   );

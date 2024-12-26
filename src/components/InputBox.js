@@ -1,10 +1,12 @@
 import Comment from "./Comment";
-import commentsData from "../Constents/commentsData.json";
 import { useState } from "react";
+import useComments from "../hooks/useComments";
+import commentsData from "../Constents/commentsData.json";
 
 const InputBox = () => {
-  const [comments, setComments] = useState(commentsData.comments);
   const [newComment, setNewComment] = useState("");
+
+  const { comments, addComment, addReply } = useComments(commentsData);
 
   const handelPostButton = (e) => {
     e.preventDefault();
@@ -14,35 +16,6 @@ const InputBox = () => {
     } else {
       addComment(newComment);
     }
-  };
-
-  const addComment = (text) => {
-    const newId = Math.random();
-    const newComment = {
-      id: newId,
-      text: text,
-      parentId: null,
-      children: [],
-    };
-    setComments((prevComment) => {
-      const updatedComment = { ...prevComment, [newId]: newComment };
-      return updatedComment;
-    });
-  };
-
-  const addReply = (text, parentId) => {
-    const newId = Math.random();
-    const newComment = {
-      id: newId,
-      text: text,
-      parentId: parentId,
-      children: [],
-    };
-    setComments((prevComment) => {
-      const updatedComment = { ...prevComment, [newId]: newComment };
-      updatedComment[parentId].children.push(newId);
-      return updatedComment;
-    });
   };
 
   return (
@@ -62,11 +35,19 @@ const InputBox = () => {
           Post
         </button>
       </form>
-      <Comment
-        comment={comments[1]}
-        allComments={comments}
-        addReply={addReply}
-      />
+
+      {Object.keys(comments).map((d, i) => {
+        return comments[d]?.parentId === null ? (
+          <Comment
+            key={i}
+            comment={comments[d]}
+            allComments={comments}
+            addReply={addReply}
+          />
+        ) : (
+          ""
+        );
+      })}
     </div>
   );
 };

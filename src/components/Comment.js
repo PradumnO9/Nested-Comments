@@ -5,7 +5,6 @@ import ReplyComment from "./ReplyComment";
 
 const Comment = ({ comment, allComments, addReply }) => {
   const [ShowReplyState, setShowReplyState] = useState(false);
-  console.log(allComments)
 
   const handleReplyButton = () => {
     setShowReplyState(!ShowReplyState);
@@ -13,27 +12,35 @@ const Comment = ({ comment, allComments, addReply }) => {
 
   return (
     <div>
-      <div className="w-1/4 bg-gray-300 rounded-md shadow-lg m-2">
-        <p className="px-2 py-1 text-lg">{comment.text}</p>
-        <div className="pb-1">
-          <button className="text-sm mx-2" onClick={handleReplyButton}>
-            {ShowReplyState ? "Cancel" : "Reply"}
-          </button>
-          <button className="text-sm mx-2 text-yellow-600">
-            {ShowReplyState ? "" : "Edit"}
-          </button>
-          <button className="text-sm mx-2 text-red-600">
-            {ShowReplyState ? "" : "Delete"}
-          </button>
+      {comment ? (
+        <div className="w-1/4 bg-gray-300 rounded-md shadow-lg m-2">
+          <p className="px-2 py-1 text-lg">{comment?.text}</p>
+          <div className="pb-1">
+            <button className="text-sm mx-2" onClick={handleReplyButton}>
+              {ShowReplyState ? "Cancel" : "Reply"}
+            </button>
+            <button className="text-sm mx-2 text-yellow-600">
+              {ShowReplyState ? "" : "Edit"}
+            </button>
+            <button className="text-sm mx-2 text-red-600">
+              {ShowReplyState ? "" : "Delete"}
+            </button>
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
       <div>
         {ShowReplyState && (
-          <ReplyComment setShowReplyState={setShowReplyState} id={comment.id} addReply={addReply} />
+          <ReplyComment
+            setShowReplyState={setShowReplyState}
+            id={comment.id}
+            addReply={addReply}
+          />
         )}
       </div>
       <div className="ml-10">
-        {comment.children.map((childId) => {
+        {comment?.children?.map((childId) => {
           return (
             <Comment
               key={childId}
