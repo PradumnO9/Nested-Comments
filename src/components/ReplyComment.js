@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-const ReplyComment = ({ setShowReplyState, addReply, id }) => {
+const ReplyComment = ({ setShowReplyState, addReply, id, setArrowToggle }) => {
   const [reply, setReply] = useState("");
   const handleReplyButton = (e) => {
     e.preventDefault();
     addReply(reply, id);
     setReply("");
     setShowReplyState(false);
+    setArrowToggle(true);
   };
 
   return (
