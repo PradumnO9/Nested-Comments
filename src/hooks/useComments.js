@@ -58,9 +58,17 @@ const useComments = (commentsData) => {
       return updatedComments;
     });
   };
-  console.log(comments);
 
-  return { comments, addComment, addReply, deleteComment };
+  const editComment = (commentId, newText) => {
+    setComments((prevComment) => {
+      const updatedComments = {...prevComment};
+      updatedComments[commentId].text = newText;
+
+      return updatedComments;
+    })
+  }
+  
+  return { comments, addComment, addReply, deleteComment, editComment };
 };
 
 export default useComments;

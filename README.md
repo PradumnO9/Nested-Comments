@@ -2,9 +2,14 @@
 
 - Nested comment functionality using React
 - Styling using Tailwind CSS
-- functionalities
+- n comments and n replies 
+- Functionalities
     - Add Comment
     - Reply Comment
     - Delete Comment
-- n comments and n replies 
-- useComments a custom hook for all actions (addComments, deleteComments, deleteComment)
+    - Edit Comment
+- useComments a custom hook for all actions
+    - addComments
+    - replyComment
+    - deleteComment
+    - EditComment

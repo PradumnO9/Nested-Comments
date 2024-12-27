@@ -2,13 +2,25 @@ import { useState } from "react";
 import ReplyComment from "./ReplyComment";
 import { FaSortUp } from "react-icons/fa";
 import { FaSortDown } from "react-icons/fa";
+import EditComment from "./EditComment";
 
-const Comment = ({ comment, allComments, addReply, deleteComment }) => {
+const Comment = ({
+  comment,
+  allComments,
+  addReply,
+  deleteComment,
+  editComment,
+}) => {
   const [ShowReplyState, setShowReplyState] = useState(false);
+  const [editState, setEditState] = useState(false);
   const [arrowToggle, setArrowToggle] = useState(false);
 
   const handleReplyButton = () => {
     setShowReplyState(!ShowReplyState);
+  };
+
+  const handleEditButton = () => {
+    setEditState(!editState);
   };
 
   const handleArrowToggleButton = () => {
@@ -28,10 +40,18 @@ const Comment = ({ comment, allComments, addReply, deleteComment }) => {
                 <p>Reply ({comment?.children.length})</p>
               )}
             </button>
-            <button className="text-sm mx-2 text-yellow-600">
+            <button
+              className="text-sm mx-2 text-yellow-600"
+              onClick={handleEditButton}
+            >
               {ShowReplyState ? "" : "Edit"}
             </button>
-            <button className="text-sm mx-2 text-red-600" onClick={() => {deleteComment(comment.id)}}>
+            <button
+              className="text-sm mx-2 text-red-600"
+              onClick={() => {
+                deleteComment(comment.id);
+              }}
+            >
               {ShowReplyState ? "" : "Delete"}
             </button>
           </div>
@@ -60,6 +80,15 @@ const Comment = ({ comment, allComments, addReply, deleteComment }) => {
           />
         )}
       </div>
+      <div>
+        {editState && (
+          <EditComment
+            setEditState={setEditState}
+            editComment={editComment}
+            commentId={comment.id}
+          />
+        )}
+      </div>
       {arrowToggle && (
         <div className="ml-10">
           {comment?.children?.map((childId) => {
@@ -70,6 +99,7 @@ const Comment = ({ comment, allComments, addReply, deleteComment }) => {
                 allComments={allComments}
                 addReply={addReply}
                 deleteComment={deleteComment}
+                editComment={editComment}
               />
             );
           })}
