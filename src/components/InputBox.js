@@ -6,7 +6,7 @@ import commentsData from "../Constents/commentsData.json";
 const InputBox = () => {
   const [newComment, setNewComment] = useState("");
 
-  const { comments, addComment, addReply } = useComments(commentsData);
+  const { comments, addComment, addReply, deleteComment } = useComments(commentsData);
 
   const handelPostButton = (e) => {
     e.preventDefault();
@@ -43,6 +43,7 @@ const InputBox = () => {
             comment={comments[d]}
             allComments={comments}
             addReply={addReply}
+            deleteComment={deleteComment}
           />
         ) : (
           ""

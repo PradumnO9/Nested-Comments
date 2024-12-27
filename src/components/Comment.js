@@ -3,7 +3,7 @@ import ReplyComment from "./ReplyComment";
 import { FaSortUp } from "react-icons/fa";
 import { FaSortDown } from "react-icons/fa";
 
-const Comment = ({ comment, allComments, addReply }) => {
+const Comment = ({ comment, allComments, addReply, deleteComment }) => {
   const [ShowReplyState, setShowReplyState] = useState(false);
   const [arrowToggle, setArrowToggle] = useState(false);
 
@@ -31,7 +31,7 @@ const Comment = ({ comment, allComments, addReply }) => {
             <button className="text-sm mx-2 text-yellow-600">
               {ShowReplyState ? "" : "Edit"}
             </button>
-            <button className="text-sm mx-2 text-red-600">
+            <button className="text-sm mx-2 text-red-600" onClick={() => {deleteComment(comment.id)}}>
               {ShowReplyState ? "" : "Delete"}
             </button>
           </div>
@@ -69,6 +69,7 @@ const Comment = ({ comment, allComments, addReply }) => {
                 comment={allComments[childId]}
                 allComments={allComments}
                 addReply={addReply}
+                deleteComment={deleteComment}
               />
             );
           })}
