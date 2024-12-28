@@ -3,6 +3,7 @@
 - Nested comment functionality using React
 - Styling using Tailwind CSS
 - n comments and n replies 
+- Created context to avoid prop drilling
 - Functionalities
     - Add Comment
     - Reply Comment
