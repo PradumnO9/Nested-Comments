@@ -5,12 +5,9 @@ import { FaSortDown } from "react-icons/fa";
 import EditComment from "./EditComment";
 import { CommentActions } from "../App";
 
-const Comment = ({
-  comment,
-  allComments,
-}) => {
+const Comment = ({ comment, allComments }) => {
 
-  const { addReply, deleteComment, editComment } = useContext(CommentActions)
+  const { deleteComment } = useContext(CommentActions)
 
   const [ShowReplyState, setShowReplyState] = useState(false);
   const [editState, setEditState] = useState(false);
@@ -84,7 +81,6 @@ const Comment = ({
         {editState && (
           <EditComment
             setEditState={setEditState}
-            editComment={editComment}
             commentId={comment.id}
           />
         )}
@@ -97,9 +93,6 @@ const Comment = ({
                 key={childId}
                 comment={allComments[childId]}
                 allComments={allComments}
-                addReply={addReply}
-                deleteComment={deleteComment}
-                editComment={editComment}
               />
             );
           })}

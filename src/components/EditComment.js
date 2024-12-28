@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CommentActions } from "../App";
 
-const EditComment = ({ setEditState, editComment, commentId }) => {
+const EditComment = ({ setEditState, commentId }) => {
     const [newText, setNewText] = useState("");
+
+    const { editComment } = useContext(CommentActions)
 
     const handleEditButton = (e) => {
         e.preventDefault();
