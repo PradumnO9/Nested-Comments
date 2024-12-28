@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CommentActions } from "../App";
 
-const ReplyComment = ({ setShowReplyState, addReply, id, setArrowToggle }) => {
+const ReplyComment = ({ setShowReplyState, id, setArrowToggle }) => {
   const [reply, setReply] = useState("");
+
+  const { addReply } = useContext(CommentActions);
   
   const handleReplyButton = (e) => {
     e.preventDefault();

@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ReplyComment from "./ReplyComment";
 import { FaSortUp } from "react-icons/fa";
 import { FaSortDown } from "react-icons/fa";
 import EditComment from "./EditComment";
+import { CommentActions } from "../App";
 
 const Comment = ({
   comment,
   allComments,
-  addReply,
-  deleteComment,
-  editComment,
 }) => {
+
+  const { addReply, deleteComment, editComment } = useContext(CommentActions)
+
   const [ShowReplyState, setShowReplyState] = useState(false);
   const [editState, setEditState] = useState(false);
   const [arrowToggle, setArrowToggle] = useState(false);
@@ -75,7 +76,6 @@ const Comment = ({
           <ReplyComment
             setShowReplyState={setShowReplyState}
             id={comment.id}
-            addReply={addReply}
             setArrowToggle={setArrowToggle}
           />
         )}

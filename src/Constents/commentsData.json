@@ -2,43 +2,43 @@
     "comments": {
         "1": {
             "id": 1,
-            "text": "Hello",
+            "text": "You can comment using this input box, and see using this arrow toggler 😊.",
             "parentId": null,
             "children": [2, 3, 5]
         },
         "2": {
             "id": 2,
-            "text": "Hi",
+            "text": "Wow..., reply is also working.",
             "parentId": 1,
             "children": []
         },
         "3": {
             "id": 3,
-            "text": "Hey buddy, how are you?",
+            "text": "That really good..",
             "parentId": 1,
             "children": [4]
         },
         "4": {
             "id": 4,
-            "text": "I am fine what about you?",
+            "text": "Bingoo, we can reply n levels...",
             "parentId": 3,
             "children": [6]
         },
         "5": {
             "id": 5,
-            "text": "hello everyone...",
+            "text": "Great buddy 👍",
             "parentId": 1,
             "children": []
         },
         "6": {
             "id": 6,
-            "text": "hey...",
+            "text": "😦",
             "parentId": 1,
             "children": []
         },
         "7": {
             "id": 7,
-            "text": "set...",
+            "text": "Can reply to each comment, as well as edit and delete 😁.",
             "parentId": null,
             "children": []
         }

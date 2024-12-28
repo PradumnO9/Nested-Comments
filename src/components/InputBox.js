@@ -1,12 +1,11 @@
+import { CommentActions } from "../App";
 import Comment from "./Comment";
-import { useState } from "react";
-import useComments from "../hooks/useComments";
-import commentsData from "../Constents/commentsData.json";
+import { useContext, useState } from "react";
 
 const InputBox = () => {
   const [newComment, setNewComment] = useState("");
 
-  const { comments, addComment, addReply, deleteComment, editComment } = useComments(commentsData);
+  const { comments, addComment } = useContext(CommentActions)
 
   const handelPostButton = (e) => {
     e.preventDefault();
@@ -42,9 +41,6 @@ const InputBox = () => {
             key={i}
             comment={comments[d]}
             allComments={comments}
-            addReply={addReply}
-            deleteComment={deleteComment}
-            editComment={editComment}
           />
         ) : (
           ""
